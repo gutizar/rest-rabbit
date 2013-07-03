@@ -1,0 +1,28 @@
+<html>
+<head>
+	<title>SOCKET.IO TEST</title>
+	<script src="http://localhost:9090/socket.io/socket.io.js"></script>
+	<script>
+	  var socket = io.connect('http://localhost:9090');
+	  
+	  socket.on('queue', function (data) {
+	    console.log(data);
+	    var ul = document.getElementById("log");
+		var li = document.createElement("li");
+		var text = 'API REQUEST: ' + data.timestamp.date +
+			'; ID: ' + data.book_id +
+			'; AUTHOR: ' + data.book_author +
+			'; TITLE: ' + data.book_name +
+			'; CATETORY: ' + data.book_category;
+
+		li.appendChild(document.createTextNode(text));
+		ul.appendChild(li);
+	  });
+	</script>
+</head>
+<body>
+	<h1>REQUEST LOG:</h1>
+	<h2>List of requested books</h2>
+	<ul id="log"></ul>
+</body>
+</html>

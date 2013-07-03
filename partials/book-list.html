@@ -1,0 +1,9 @@
+<div ng-show="apiCallStatus">
+	<ul class="books">
+		<li ng-repeat="book in appData.books | orderBy:orderProp">
+			<a href="#/books/{{book.id}}">{{book.title}}</a>
+			<p>{{book.summary}}</p>
+		</li>
+	</ul>	
+</div>
+<div class="loading" ng-hide="apiCallStatus">Loading...</div>

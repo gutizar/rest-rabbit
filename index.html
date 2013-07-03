@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="booker">
+  <head>
+  	<meta charset="utf-8">
+  	<title>AngularJS sample application</title>
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+    <!-- Loading Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Loading Flat UI -->
+    <link href="css/flat-ui.css" rel="stylesheet">
+
+    <!-- Loading App styles -->
+	<link href="css/app.css" rel="stylesheet">
+
+    <!-- Loading AngularJS -->
+    <script src="components/angular/angular.js"></script>
+    <!-- Loading ShowdownJS -->
+    <script src="components/showdown/compressed/showdown.js"></script>
+    <!-- Loading HighlightJS and the styles -->
+    <script src="components/highlight/highlight.js"></script>
+    <script src="components/bootstrap/js/bootstrap-transition.js"></script>
+    <link rel="stylesheet" href="css/highlight/github.css">
+    <script src="components/jquery/jquery.min.js"></script>
+  	<script src="js/app.js"></script>
+  	<script src="js/controllers.js"></script>
+  	<script src="js/filters.js"></script>
+  	<script src="js/directives.js"></script>
+    <link rel="shortcut icon" href="img/favicon.ico">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  	<header>
+		<div class="navbar navbar-inverse">
+			<div class="navbar-inner">
+					<ul class="nav">
+						<li><a href="#">Home</a></li>
+						<li><a href="mailto:gutizar@gmail.com">Contact</a></li>
+					</ul>
+		  	</div>
+		</div>
+  	</header>
+	
+  	<div class="container">
+  		<div class="page-header">
+  			<h1>AngularJS: <small>Sample application with Symfony REST API</small>
+  			</h1>
+  		</div>
+  		<div class="row demo-tiles">
+	        <div class="span3">
+	          <div class="tile">
+	            <img class="tile-image big-illustration" alt="" src="img/illustrations/compass.png">
+	            <h3 class="tile-title">Mi blog</h3>
+	            <p>Un blog con todas mis experiencias</p>
+	            <a class="btn btn-primary btn-large btn-block" href="http://felixgutierrezmuzquiz.wordpress.com/">Blog</a>
+	          </div>
+	        </div>
+
+	        <div class="span3">
+	          <div class="tile">
+	            <img class="tile-image" alt="" src="img/illustrations/settings.png">
+	            <h3 class="tile-title">Método IDEA</h3>
+	            <p>Entre la física conceptual y la física aplicada</p>
+	            <a class="btn btn-primary btn-large btn-block" href="http://www.felixagm.es/FisicaConceptualAplicada/index.htm">Acceder</a>
+	          </div>
+	        </div>
+
+	        <div class="span3">
+	          <div class="tile">
+	            <img class="tile-image" alt="" src="img/illustrations/colors.png">
+	            <h3 class="tile-title">Okna</h3>
+	            <p>Ventanas de Ljubljana - galería de imágenes</p>
+	            <a class="btn btn-primary btn-large btn-block" href="http://www.felixagm.es/AlbumFotos/Ventanas_Ljubljana/index2.htm">Tukaj</a>
+	          </div>
+	        </div>
+
+	        <div class="span3">
+	          <div class="tile tile-hot">
+	            <img class="tile-image big-illustration" alt="" src="img/illustrations/share.png">
+	            <h3 class="tile-title">Cinemática</h3>
+	            <p>Recursos de cinemática conceptual y aplicada</p>
+	            <a class="btn btn-primary btn-large btn-block" href="http://www.felixagm.es/tablaCinematica.htm">Acceder</a>
+	          </div>
+	        </div>
+      	</div>
+
+	    <div class="container-fluid">
+	  		<div class="row-fluid">
+	  			<div class="span3">
+	  				<!-- Sidebar menu -->
+	  				<ul class="nav nav-list">
+	  					<li class="nav-header">Física y Química</li>
+	  					<li>3º de ESO</li>
+	  					<li>4º de ESO</li>
+	  					<li>1º de Bachillerato</li>
+	  					<li>2º de Bachillerato (Física)</li>
+	  					<li class="nav-header">Informática</li>
+	  					<li>4º de ESO</li>
+	  					<li>1º de Bachillerato</li>
+	  					<li class="divider"></li>
+	  					<li class="nav-header">Exámenes</li>
+	  					<li>Curso 2010 - 2011</li>
+	  					<li>Curso 2011 - 2012</li>
+	  					<li>Curso 2012 - 2013</li>
+	  					<li class="divider"></li>
+	  					<li>
+	  						<div class="demo-illustrations">
+	  							<p>Si te gustan las matemáticas</p>
+	  							<a href="http://srbarreiro.es/">
+	  								<img src="img/illustrations/calendar.png">
+	  							</a>
+	  						</div>
+	  					</li>
+	  				</ul>
+	  			</div>
+	  			<div class="span9">
+	  				<!-- Content block -->
+					<div ng-view></div>
+
+	  				<blockquote class="pull-right">
+	  					<p>El HTML5 es cojonudo</p>
+	  					<small>
+	  						Felisín en <cite title="Source Title">sus memorias</cite>
+	  					</small>
+	  				</blockquote>
+	  			</div>
+	  		</div>
+	  	</div>
+  	</div>
+
+  	<footer>
+      <div class="container">
+        <div class="row">
+          <div class="span8">
+            <h3>Subscribe</h3>
+            <p>Do you like this freebie? Want to get more stuff like this?<br>
+              Subscribe to designmodo news and updates to stay tuned on great designs.<br>
+              Go to: <a href="http://designmodo.com/flat-free" target="_blank">designmodo.com/flat-free</a>
+            </p>
+            <h6 class="footer-copyright">Designmodo © 2013</h6>
+          </div>
+
+          <div class="span4 footer-brand">
+            <a href="http://designmodo.com" target="_blank">
+              <img src="img/footer/logo.png" alt="Designmodo.com">
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

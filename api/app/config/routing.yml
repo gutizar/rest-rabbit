@@ -1,0 +1,4 @@
+avtenta_angular:
+    resource: "@AvtentaAngularBundle/Resources/config/routing.yml"
+    prefix:   /
+

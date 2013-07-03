@@ -1,0 +1,13 @@
+<div class="book" ng-show="apiCallStatus">
+	<h4>{{appData.book.title}}</h4>
+	<hr>
+	<div>
+		<ul>
+			<li>Author: {{appData.book.author}}</li>
+			<li>Category: {{appData.book.category}}</li>
+			<li>Publication date: {{appData.book.publish_date | date:'dd.MM.yyyy'}}</li>
+			<li>Summary: {{appData.book.summary}}</li>
+		</ul>
+	</div>
+</div>
+<div class="loading" ng-hide="apiCallStatus">Loading...</div>

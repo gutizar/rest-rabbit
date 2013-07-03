@@ -1,0 +1,13 @@
+<div class="book" ng-show="apiCallStatus">
+	<h4>{{documentData.attributes.object_name}}</h4>
+	<hr>
+	<div>
+		<ul>
+			<li>ID: {{documentData.attributes.r_object_id}}</li>
+			<li>Type: {{documentData.attributes.r_object_type}}</li>
+			<li>Creation date: {{documentData.attributes.r_creation_date | date:'dd.MM.yyyy'}}</li>
+			<li>Title: {{documentData.attributes.title}}</li>
+		</ul>
+	</div>
+</div>
+<div class="loading" ng-hide="apiCallStatus">Loading...</div>

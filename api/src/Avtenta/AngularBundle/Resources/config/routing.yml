@@ -1,0 +1,16 @@
+avtenta_angular_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: AvtentaAngularBundle:Default:index }
+
+avtenta_api_book_all:
+    pattern: /bookapi
+    defaults: { _controller: AvtentaAngularBundle:Api:all, _format: json }
+    requirements:
+        _method: GET
+
+avtenta_api_book_get:
+    pattern: /bookapi/{id}
+    defaults: { _controller: AvtentaAngularBundle:Api:get, _format: json }
+    requirements:
+        _method: GET
+        id: "\d+"
