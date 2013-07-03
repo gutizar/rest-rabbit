@@ -20,3 +20,7 @@ services:
         class: Avtenta\AngularBundle\Consumer\RequestBookConsumer
         arguments: [@logger]
 
+    book_messaging_system:
+        class: Avtenta\AngularBundle\Producer\BookMessageSystem
+        arguments: ["@old_sound_rabbit_mq.request_book_producer"]
+

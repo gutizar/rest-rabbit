@@ -3,6 +3,7 @@
 namespace Avtenta\AngularBundle\Controller;
 
 use Avtenta\AngularBundle\Entity\Book;
+use Avtenta\AngularBundle\Form\BookType;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -36,16 +37,7 @@ class ApiController extends Controller
         	throw $this->createNotFoundException('Book not found');
         }
 
-        $msg = array(
-        	'timestamp' => new \DateTime(),
-        	'book_id' => $entity->getId(),
-        	'book_name' => $entity->getTitle(),
-        	'book_author' => $entity->getAuthor(),
-        	'book_category' => $entity->getCategory()
-        );
-
-        $this->get('old_sound_rabbit_mq.request_book_producer')->setContentType('application/json');
-        $this->get('old_sound_rabbit_mq.request_book_producer')->publish(json_encode($msg));
+        $this->get('book_messaging_system')->queueMessage($entity, 'GET');
 
         return array(
         	'book' => $entity
@@ -59,6 +51,35 @@ class ApiController extends Controller
 
     private function processForm(Book $book)
     {
+        $em = $this->getDoctrine()->getManager();
 
+        $form = $this->createForm(new BookType(), $book);
+        $form->bind($this->getRequest());
+
+        $isNew = $em->getRepository('AvtentaAngularBundle:Book')->findBy(array(
+            'title' => $book->getTitle())) == null;
+
+        $statusCode = ($isNew) ? 201 : 204;
+
+        if ($form->isValid())
+        {
+            $em->persist($book);
+            $em->flush();
+
+            $response = new Response();
+            $response->setStatusCode($statusCode);
+
+            if (201 == $statusCode)
+            {
+                $response->headers->set('Location',
+                    $this->generateUrl('avtenta_api_book_get', array(
+                        'id' => $book->getId()), true)
+                );
+            }
+
+            return $response;
+        }
+
+        return View::create($form, 400);
     }
 }

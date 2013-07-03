@@ -14,7 +14,7 @@ class BookType extends AbstractType
             ->add('title')
             ->add('author')
             ->add('category')
-            ->add('publishDate')
+            ->add('publishDate', 'datetime', array('widget' => 'single_text', 'format' => 'yyyy-MM-dd HH:mm:ss'))
             ->add('summary')
         ;
     }
@@ -22,7 +22,8 @@ class BookType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Avtenta\AngularBundle\Entity\Book'
+            'data_class' => 'Avtenta\AngularBundle\Entity\Book',
+            'csrf_protection' => false,
         ));
     }
 
