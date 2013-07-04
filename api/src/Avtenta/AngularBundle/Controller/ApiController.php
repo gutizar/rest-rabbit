@@ -4,7 +4,9 @@ namespace Avtenta\AngularBundle\Controller;
 
 use Avtenta\AngularBundle\Entity\Book;
 use Avtenta\AngularBundle\Form\BookType;
+use FOS\RestBundle\View\View;
 use FOS\RestBundle\Controller\Annotations as Rest;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class ApiController extends Controller

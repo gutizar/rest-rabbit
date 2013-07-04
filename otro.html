@@ -5,7 +5,7 @@
 	<script>
 	  var socket = io.connect('http://localhost:9090');
 	  
-	  socket.on('1', function (data) {
+	  socket.on('2', function (data) {
 	    console.log(data);
 	    var ul = document.getElementById("log");
 		var li = document.createElement("li");
@@ -17,7 +17,7 @@
 	</script>
 </head>
 <body>
-	<h1>REQUEST LOG CHAT NUMBER 1:</h1>
+	<h1>REQUEST LOG CHAT NUMBER 2:</h1>
 	<h2>List of received messages:</h2>
 	<ul id="log"></ul>
 </body>

@@ -14,3 +14,10 @@ avtenta_api_book_get:
     requirements:
         _method: GET
         id: "\d+"
+
+avtenta_api_chat_post:
+    pattern: /chatapi/{id}
+    defaults: { _controller: AvtentaAngularBundle:Chat:publish, _format: json }
+    requirements:
+        _method: POST
+        id: "\d+"

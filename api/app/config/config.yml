@@ -87,9 +87,17 @@ old_sound_rabbit_mq:
         request_book:
             connection: default
             exchange_options: {name: 'request-book', type: direct}
+        chat:
+            connection: default
+            exchange_options: {name: 'chat', type: direct}
     consumers:
         request_book:
             connection: default
             exchange_options: {name: 'request-book', type: direct}
             queue_options:    {name: 'request-book'}
+            callback:         request_book_service
+        chat:
+            connection: default
+            exchange_options: {name: 'chat', type: direct}
+            queue_options:    {name: 'chat'}
             callback:         request_book_service

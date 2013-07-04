@@ -23,7 +23,7 @@ security:
             security: false
 
         wsse_secured:
-            pattern:   /bookapi/*
+            pattern:   /(book|chat)api/*
             wsse:      true
             provider:  in_memory
 

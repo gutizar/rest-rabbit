@@ -4,7 +4,7 @@ var io = require('socket.io').listen(9090);
 
 var connection = amqp.createConnection(
   { url: "amqp://guest:guest@localhost:5672" },
-  { defaultExchangeName: "request-book" }
+  { defaultExchangeName: "chat" }
 );
 
 io.sockets.on('connection', function () {
@@ -16,18 +16,18 @@ connection.on('ready', function () {
   console.log('Connection ready');
   // Use the default 'amq.topic' exchange  
   connection.queue(
-    'request-book',
+    'chat',
     {durable: true, autoDelete: false},
     function (q) {
-      console.log('Connected to the request_book queue');
+      console.log('Connected to the chat queue');
       // Catch all messages
-      q.bind("request-book");
+      q.bind("chat");
 
       // Receive messages
       q.subscribe(function (message) {
         // Print messages to stdout
         console.log('Received message');
-        io.sockets.emit('queue', message);
+        io.sockets.emit(message.chatId, message);
       });
     }
   );

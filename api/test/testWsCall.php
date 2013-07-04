@@ -17,12 +17,35 @@ function generate_wsse_header($username, $secret)
     );
 }
 
-echo generate_wsse_header('admin', 'adminpass');
+// First CLI argument: message to POST
+$cliMsg = $argv[1];
+
+// Second CLI argument: chat ID
+$chatId = $argv[2];
 
 $curl_handle = curl_init();
 
-curl_setopt($curl_handle, CURLOPT_URL, 'http://api.angular.local/app_dev.php/bookapi/2');
-curl_setopt($curl_handle, CURLOPT_HTTPHEADER, array(generate_wsse_header('admin', 'adminpass')));
+$headers = array();
+$headers[] = 'Accept: application/json';
+$headers[] = 'Content-Type: application/json';
+$headers[] = generate_wsse_header('admin', 'adminpass');
+
+echo implode('; ', $headers) . PHP_EOL;
+
+curl_setopt($curl_handle, CURLOPT_URL, 'http://api.angular.local/app_dev.php/chatapi/' . $chatId);
+curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($curl_handle, CURLOPT_POST, 1);
+curl_setopt($curl_handle, CURLOPT_HTTPHEADER, $headers);
+
+$message = new stdClass;
+$message->content = $cliMsg;
+
+$data = array(
+    'message' => $message
+);
+
+echo json_encode($data) . PHP_EOL;
+curl_setopt($curl_handle, CURLOPT_POSTFIELDS, json_encode($data));
 
 curl_exec($curl_handle);
 echo curl_getinfo($curl_handle, CURLINFO_HTTP_CODE); 
